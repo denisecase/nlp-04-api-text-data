@@ -1,6 +1,6 @@
-"""
-stage03_transform_case.py
-(EDIT YOUR COPY OF THIS FILE)
+"""stage03_transform.py.
+
+(EDIT YOUR VERSION OF THIS FILE)
 
 Source: validated JSON object
 Sink: Polars DataFrame
@@ -15,12 +15,11 @@ Analytical Questions
 - How can records be normalized into tabular form?
 - What derived fields would support analysis?
 
-Notes
-
-Following our process, do NOT edit this _case file directly,
+Notes:
+Following our process, do NOT edit this  file directly,
 keep it as a working example.
 
-In your custom project, copy this _case.py file and
+In your custom project, copy this .py file and
 append with _yourname.py instead.
 
 Then edit your copied Python file to:

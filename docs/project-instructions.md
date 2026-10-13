@@ -1,116 +1,131 @@
 # Project Instructions
 
-## WEDNESDAY: Complete Workflow Phase 1
+## Goal
 
-Follow the instructions in
-[⭐ **Workflow: Apply Example**](https://denisecase.github.io/pro-analytics-02/workflow-b-apply-example-project/)
-to complete:
+Apply **API-based data acquisition and transformation**
+to retrieve structured text data
+and produce an analysis-ready dataset.
 
-1. Phase 1. **Start & Run** - copy the project and confirm it runs
-2. Phase 2. **Change Authorship** - update the project to your name and GitHub account
-3. Phase 3. **Read & Understand** - review the project structure and code
+Use an Extract, Validate, Transform, Load (EVTL) pipeline.
 
-## FRIDAY/SUNDAY: Complete Workflow Phases 2-4
+## A. Set Up Machine
 
-Again, follow the instructions above to complete:
+Complete [Workflow A: Set Up Machine](https://denisecase.github.io/pro-analytics-02/workflow-a-set-up-machine/)
+if your machine is not ready.
 
-1. Phase 4. **Make a Technical Modification**
-2. Phase 5. **Apply the Skills to a New Problem**
+## B. Explore Example Project
 
-## Phase 4 Suggestions
+Follow [Workflow B: Explore Example Project](https://denisecase.github.io/pro-analytics-02/workflow-b-explore-example-project/).
 
-Make a small technical change that does not break the pipeline.
-Choose any one of these (or a different modification as you like):
+Explore how the example:
 
-- Change the API endpoint to another JSONPlaceholder route (e.g., `/comments` instead of `/posts`)
-- Modify the output file name (e.g., change `case_processed.csv`)
-- Add a new derived column in the Transform stage (e.g., combine fields or compute lengths)
-- Adjust logging messages to provide more detail about the pipeline stages
-- Modify which fields are selected in the Transform stage
+- Retrieves JSON records from a public API.
+- Preserves the raw API response.
+- Validates the structure of the JSON data.
+- Selects fields and creates derived text features.
+- Uses Polars to construct a structured dataset.
+- Saves the transformed records as a CSV artifact.
 
-Confirm the script still runs successfully after your change.
+Review the purpose of each EVTL stage
+and how the data moves between stages.
 
-## Phase 5 Suggestions
+## C. Start New Project
 
-### Phase 5 Suggestion 1. New API Source (Directed)
+Follow [Workflow C: Start New Project](https://denisecase.github.io/pro-analytics-02/workflow-c-start-new-project/).
 
-Apply the same EVTL pipeline to a different JSON API.
+IMPORTANT: New repository name:
+**nlp-04-api-text-data-custom**.
 
-You may use one of these example endpoints:
+VERIFY: You have completed git add-commit-push to GitHub at least twice.
 
-- https://jsonplaceholder.typicode.com/comments
-- https://jsonplaceholder.typicode.com/users
-- https://jsonplaceholder.typicode.com/albums
+## D. Apply Skills
 
-Steps:
+Follow [Workflow D: Apply Skills](https://denisecase.github.io/pro-analytics-02/workflow-d-apply-skills/).
 
-- Update `config_case.py` (in your copied file) with the new API URL
-- Run the pipeline
-- Inspect the JSON structure in the Validate stage
-- Update the Transform stage to extract relevant fields
-- Run the pipeline again and confirm success
+**Your problem:** Acquire and prepare text records
+from a different JSON API endpoint.
 
-Then:
+Use the JSONPlaceholder comments endpoint:
 
-- Describe the structure of the JSON (list, dictionary, nested fields)
-- Identify at least 3 useful fields and explain why they matter
-- Explain what changes you made in Transform and why
+https://jsonplaceholder.typicode.com/comments
 
-### Phase 5 Suggestion 2. New API (Original Selection)
+Keep the original `_case.py` files as working examples.
+Create and modify copies for your custom processing stages.
 
-Apply this pipeline to a different API of your choice.
+Update the pipeline imports as needed
+so your custom implementation executes.
 
-Examples include:
+### Progression 1. Your Project Works Like the Example
 
-- public data APIs (weather, government data, etc.)
-- APIs that require simple API keys (optional)
+Ensure your new custom project runs like the example.
 
-Steps:
+Verify that key files have been updated to use **your GitHub account** and
+the **new custom repository name**.
 
-- Update your copied `config` file with the new API
-- Inspect the JSON structure carefully in Validate
-- Modify Transform to extract useful fields
-- Run the pipeline and confirm success
+### Progression 2. Make a Technical Modification
 
-Then:
+Add a derived text feature to the Transform stage.
 
-- Describe how the JSON structure differs from the original example
-- Explain how you adapted your validation and transformation steps
-- Identify one challenge you encountered and how you resolved it
+For example, calculate the number of words
+in a text field.
 
-## Key Skill Focus
+Verify that the resulting DataFrame
+contains the new feature.
 
-As you work, focus on:
+Explain what the feature measures
+and how it might support analysis.
 
-- how to fetch JSON data from an API
-- how to inspect unknown JSON structures
-- how to identify keys and data types
-- how to extract only the fields you need
-- how data moves through the EVTL pipeline
+### Progression 3. Apply to a New Problem
 
-Your goal is to reuse the same pipeline on new data sources.
+Adapt the EVTL pipeline
+to the JSONPlaceholder comments endpoint.
 
-## Optional Enhancements
+- Update the API URL in your custom configuration.
+- Retrieve and inspect the JSON response.
+- Identify the record structure and available fields.
+- Update validation for the expected fields and data types.
+- Modify Transform to extract at least three useful fields.
+- Calculate at least one derived text feature.
+- Save the resulting dataset to a CSV artifact.
+- Verify that the output records are correct.
+- Interpret what the resulting data represents.
 
-If time allows, consider:
+Explain how the new JSON structure
+differs from the original example.
 
-- computing word counts or text lengths in Transform
-- summarizing basic statistics (min, max, mean)
-- exploring a second API endpoint for comparison
+The goal is to demonstrate that the pipeline
+can be adapted to another structured data source
+rather than relying on assumptions about one API.
 
-## Professional Communication
+## E. Finalize Project
 
-Remove instructor-provided content you no longer need in your project.
+Follow [Workflow E: Finalize Project](https://denisecase.github.io/pro-analytics-02/workflow-e-finalize/).
 
-Make sure the title and narrative reflect your presentation.
-Verify key files:
+Use `docs/index.md` to report:
 
-- README.md
-- docs/ (source and hosted on GitHub Pages)
-- src/ (pipeline and stage files)
+- API source and analytical question.
+- JSON structure and selected fields.
+- Validation requirements.
+- Transformation and derived features.
+- Results and a relevant visual.
+- Interpretation and limitations.
 
-Ensure your project clearly demonstrates:
+Include a clickable link to your repository and artifacts.
 
-- correct EVTL pipeline execution
-- understanding of JSON structure
-- ability to adapt the pipeline to new data
+## Success
+
+- [ ] README.md project-specific links use **your GitHub account**.
+- [ ] README.md project-specific links use **your custom repository name**.
+- [ ] docs/index.md project-specific links use **your GitHub account**.
+- [ ] docs/index.md project-specific links use **your custom repository name**.
+- [ ] pyproject.toml `name` has been changed to use **your custom repository name**.
+- [ ] The `src/nlp` folder reflects your authorship and custom work.
+- [ ] The custom EVTL pipeline uses the new API data.
+- [ ] The raw JSON and processed CSV artifacts are available.
+- [ ] All necessary commands are provided and work successfully.
+- [ ] Links to the Professional Python Guide (pro-analytics-02) remain unchanged.
+- [ ] Commit history shows **at least** the git add-commit-push history required in the instructions.
+
+---
+
+[◄ Back to Home](index.md)

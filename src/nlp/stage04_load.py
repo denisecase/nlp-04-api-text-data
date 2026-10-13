@@ -1,12 +1,11 @@
-"""
-stage04_load.py
+"""stage04_load.py.
+
 (NO EDITS REQUIRED IN THIS FILE)
 
 Source: DataFrame
 Sink: CSV file
 
-Notes
-
+Notes:
 - This file should not require modification.
 """
 

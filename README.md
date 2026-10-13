@@ -1,61 +1,108 @@
 # nlp-04-api-text-data
 
-[![Python 3.14+](https://img.shields.io/badge/python-3.14%2B-blue?logo=python)](#)
-[![MIT](https://img.shields.io/badge/license-see%20LICENSE-yellow.svg)](./LICENSE)
+[![Python 3.14](https://img.shields.io/badge/python-3.14%2B-blue?logo=python)](pyproject.toml)
+[![CI](https://github.com/denisecase/nlp-04-api-text-data/actions/workflows/ci-python-zensical.yml/badge.svg)](https://github.com/denisecase/nlp-04-api-text-data/actions/workflows/ci-python-zensical.yml)
+[![Documentation](https://img.shields.io/badge/docs-site-blue?logo=github)](https://denisecase.github.io/nlp-04-api-text-data/)
 
-> Structured EVTL pipeline for reliable ingestion and transformation of JSON data from web APIs.
+[![uv managed](https://img.shields.io/badge/uv-managed-DE5FE9)](https://docs.astral.sh/uv/)
+[![ty type checked](https://img.shields.io/badge/ty-type_checked-2F80ED)](https://docs.astral.sh/ty/)
+[![Zensical docs](https://img.shields.io/badge/Zensical-docs-purple)](https://zensical.org/)
+[![MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
 
-Web Mining and Applied NLP require reliable acquisition and processing of structured and semi-structured text data.
-This project implements a reproducible pipeline for working with JSON data from web APIs.
+> Acquire, validate, and transform JSON data from web APIs using Python.
 
-The pipeline follows an EVTL architecture:
+## Project Overview
 
-- Extract data from an external API
-- Validate structure and content before use
-- Transform JSON into a structured representation
-- Load results into a persistent, analyzable format
+Author: Denise Case
 
-The emphasis is on correctness, inspectability, and repeatability:
-every stage has explicit inputs, outputs, and logging,
-and intermediate artifacts are preserved for verification.
+Date: 2026 October
 
-## This Project
+Fourth project in the Web Mining and Applied NLP course.
 
-This project demonstrates how to work with JSON data retrieved from web APIs using a structured EVTL pipeline.
+This project introduces structured data acquisition
+using web APIs.
 
-The workflow:
+The goal is to retrieve JSON data,
+validate its structure,
+transform it into an analysis-ready dataset,
+and persist the results.
 
-- Acquire JSON data from an external source
-- Inspect and validate its structure
-- Transform it into a tabular representation
-- Persist results for downstream analysis
+The project demonstrates an Extract, Validate,
+Transform, Load (EVTL) pipeline.
 
-Each stage is implemented as a modular component with explicit inputs and outputs.
+The project is configured in
+[pyproject.toml](pyproject.toml).
 
-## Key Files
+## Data
 
-These files define the EVTL pipeline and the components you will update for your project.
+The example retrieves JSON records from
+[JSONPlaceholder](https://jsonplaceholder.typicode.com/posts),
+a public demonstration API.
 
-- **src/nlp/pipeline_api_json.py** - Main pipeline orchestrator (no changes required)
-- **src/nlp/config_case.py** - Configuration for API access and paths (<mark>**copy and edit**</mark> for your project)
-- **src/nlp/stage01_extract.py** - Extract stage: retrieves data from the API (no changes required)
-- **src/nlp/stage02_validate_case.py** - Validate stage: inspects and verifies JSON structure (<mark>**copy and edit**</mark>)
-- **src/nlp/stage03_transform_case.py** - Transform stage: converts JSON into structured data (<mark>**copy and edit**</mark>)
-- **src/nlp/stage04_load.py** - Load stage: writes output to persistent storage (no changes required)
-- **pyproject.toml** - Project metadata and dependencies (<mark>**update**</mark> authorship, links, and dependencies)
-- **zensical.toml** - Documentation configuration (<mark>**update**</mark> authorship and links)
+Each record includes fields such as:
 
-## First: Follow These Instructions
+- User identifier.
+- Post identifier.
+- Title.
+- Body text.
 
-Follow the [step-by-step workflow guide](https://denisecase.github.io/pro-analytics-02/workflow-b-apply-example-project/) to complete:
+The pipeline preserves the raw JSON data
+and produces a structured CSV dataset.
 
-1. Phase 1. **Start & Run**
-2. Phase 2. **Change Authorship**
-3. Phase 3. **Read & Understand**
+## Approach
 
-## Success
+The project uses a modular Python pipeline
+to acquire, validate, transform, and save API data.
 
-After running the script successfully, you will see:
+The pipeline has four stages:
+
+- **Extract** - retrieve JSON data from an API.
+- **Validate** - verify the JSON structure and record types.
+- **Transform** - select fields and calculate derived text features.
+- **Load** - save the processed data to a CSV file.
+
+The example uses Requests for HTTP acquisition
+and Polars for tabular data processing.
+
+Explore these important project components:
+
+- [pyproject.toml](pyproject.toml) - project identity, dependencies, and tool configuration.
+- [src/nlp/pipeline_api_json.py](src/nlp/pipeline_api_json.py) - main EVTL pipeline orchestrator.
+- [src/nlp/config.py](src/nlp/config.py) - example API and path configuration.
+- [src/nlp/stage01_extract.py](src/nlp/stage01_extract.py) - retrieve API data.
+- [src/nlp/stage02_validate.py](src/nlp/stage02_validate.py) - validate JSON data.
+- [src/nlp/stage03_transform.py](src/nlp/stage03_transform.py) - transform records into a DataFrame.
+- [src/nlp/stage04_load.py](src/nlp/stage04_load.py) - save processed results.
+- [tests/](tests/) - automated tests.
+- [.github/workflows/](.github/workflows/) - automated testing and documentation deployment.
+- [docs/](docs/) - project documentation.
+- [zensical.toml](zensical.toml) - documentation configuration.
+
+The goal is to understand how data moves
+through a reproducible pipeline
+with explicit stages and intermediate results.
+
+## Run the Project
+
+Follow the [Professional Python Workflow Guide](https://denisecase.github.io/pro-analytics-02/)
+to set up your machine and project environment.
+
+From a VS Code terminal in the project root:
+
+```shell
+uv run python -m nlp.pipeline_api_json
+```
+
+## Results
+
+The pipeline retrieves JSON records,
+checks their structure,
+and transforms the records into a tabular dataset.
+
+The Transform stage calculates derived fields,
+including title and body text lengths.
+
+Successful execution produces:
 
 ```shell
 ========================
@@ -63,134 +110,126 @@ Pipeline executed successfully!
 ========================
 ```
 
-The following artifacts will be created:
+The following files are created:
 
-- project.log - confirming successful run
-- data/raw/case_raw.json - dump of the fetched JSON
-- data/processed/case_processed.csv - final loaded result
+- `project.log` - pipeline execution log.
+- `data/raw/case_raw.json` - original API response.
+- `data/processed/case_processed.csv` - transformed dataset.
 
-## Command Reference
+These artifacts provide evidence of successful
+data acquisition, validation, transformation, and persistence.
 
-The commands below are used in the workflow guide above.
-They are provided here for convenience.
+## Verification
 
-Follow the guide for the **full instructions**.
-
-<details>
-<summary>Show command reference</summary>
-
-### In a machine terminal (open in your `Repos` folder)
-
-After you get a copy of this repo in your own GitHub account,
-open a machine terminal in your `Repos` folder:
+Run the automated tests:
 
 ```shell
-# Replace username with YOUR GitHub username.
-git clone https://github.com/username/nlp-04-api-text-data
-cd nlp-04-api-text-data
-code .
+uv run pytest
 ```
 
-### In a VS Code terminal
+## Project Documentation
+
+The [hosted documentation site](https://denisecase.github.io/nlp-04-api-text-data/)
+is published using Zensical and GitHub Pages.
+
+The documentation site is used to present the project report,
+covering such sections as data, methods, results, visualizations,
+interpretation, and conclusions.
+
+## CI/CD and GitHub Actions
+
+This project includes continuous integration and continuous deployment (CI/CD)
+to check project files and publish the docs.
+
+GitHub Actions include:
+
+- [CI: Python and Documentation Checks](https://github.com/denisecase/nlp-04-api-text-data/actions/workflows/ci-python-zensical.yml)
+- [CD: Documentation Deployment](https://github.com/denisecase/nlp-04-api-text-data/actions/workflows/deploy-zensical.yml)
+
+## Developer Reference
+
+Follow the
+[Professional Python Workflow Guide](https://denisecase.github.io/pro-analytics-02/)
+for **detailed instructions and troubleshooting**.
+
+### Initialize and Update the Python Environment
+
+With the project open in VS Code, open a VS Code terminal.
+Paste each command and hit Enter or Return after to run it.
 
 ```shell
+uvx pup-clean --delete
 uv self update
 uv python pin 3.14
-uv sync --extra dev --extra docs --upgrade
+uv python install
+uv lock --upgrade
+uv sync
+uv audit
+```
 
-uvx pre-commit install
+### Set Up and Run Git Hooks
+
+Set up and run the git hooks to perform
+basic checks automatically before
+any changes get pushed to GitHub.
+
+In the VS Code terminal,
+paste each command and hit Enter or Return after to run it.
+
+```shell
+uv run prek install --force
+uv run prek update --freeze --cooldown-days 7
+
 git add -A
-uvx pre-commit run --all-files
-
+uv run prek run --all-files
 # repeat if changes were made
-git add -A
-uvx pre-commit run --all-files
+uv run prek run --all-files
+```
 
-# Later, we install spacy data model and
-# en_core_web_sm = english, core, web, small
-# It's big: spacy+data ~200+ MB w/ model installed
-#           ~350–450 MB for .venv is normal for NLP
-# uv run python -m spacy download en_core_web_sm
+### Run Common Chores
 
-# First, run the module
-# IMPORTANT: Close each figure after viewing so execution continues
-uv run python -m nlp.pipeline_api_json
+Run linters, formatters, type checks, tests, and
+build the documentation.
 
-uv run ruff format .
+```shell
 uv run ruff check . --fix
-uv run zensical build
+uv run ruff format .
 
+uv run ty check
+uv run python -m pytest
+uv run python -m zensical build
+```
+
+### Git add-commit-push to GitHub
+
+After making useful changes, save your work to GitHub.
+
+```shell
 git add -A
-git commit -m "update"
+git commit -m "describe your changes in quotes"
 git push -u origin main
 ```
 
-</details>
-
-## Notes
+## Developer Notes
 
 - Use the **UP ARROW** and **DOWN ARROW** in the terminal to scroll through past commands.
 - Use `CTRL+f` to find (and replace) text within a file.
 
-## Example Artifact (Output)
+## Developer Tools
 
-```text
-START PIPELINE
-ROOT_PATH = .
-DATA_PATH = data
-RAW_PATH = data\raw
-PROCESSED_PATH = data\processed
-========================
-STAGE 01: EXTRACT starting...
-========================
-SOURCE PATH = https://jsonplaceholder.typicode.com/posts
-SINK PATH = data\raw\case_raw.json
-========================
-STAGE 02: VALIDATE starting...
-========================
-JSON STRUCTURE INSPECTION:
-Top-level type: list
-Keys in first record: ['userId', 'id', 'title', 'body']
-Field types:
-userId: int
-id: int
-title: str
-body: str
-Validation passed.
-Sink: validated JSON object
-========================
-STAGE 03: TRANSFORM starting...
-========================
-Transformation complete.
-DataFrame preview:
-shape: (5, 6)
-...preview of dataframe...
-Sink: Polars DataFrame created
-========================
-STAGE 04: LOAD starting...
-========================
-SINK PATH = data\processed\case_processed.csv
-========================
-Pipeline executed successfully!
-========================
-```
+This project uses professional Python tools to support development,
+testing, documentation, and code quality.
 
-## Enhancements
+- [uv](https://docs.astral.sh/uv/) - Python environments and dependencies.
+- [Ruff](https://docs.astral.sh/ruff/) - Python linting and formatting, configured in [.ruff.toml](.ruff.toml).
+- [ty](https://docs.astral.sh/ty/) - Python type checking.
+- [pytest](https://docs.pytest.org/) - automated Python testing, configured in [.pytest.toml](.pytest.toml).
+- [prek](https://prek.j178.dev/) - Git hooks and automated checks, configured in [prek.toml](prek.toml).
+- [Zensical](https://zensical.org/) - project documentation, configured in [zensical.toml](zensical.toml).
 
-In production systems, validation is often automated using tools
-such as **Great Expectations** or **Soda**.
+## Links
 
-Within the EVTL architecture, **VALIDATE** is a key stage
-with a clear source, process, and sink:
-
-- **Source**: JSON data extracted from the API
-- **Process**: checking structure, confirming assumptions, and identifying data quality issues
-- **Sink**: validated JSON passed to the TRANSFORM stage
-
-This stage ensures the data is in a **consistent and reliable form**
-before transformation begins,
-so later steps can run without errors or unexpected results.
-
-In this project, validation is implemented directly,
-so all checks are visible, repeatable, and easy to review as part
-of the pipeline.
+- [Hosted Documentation](https://denisecase.github.io/nlp-04-api-text-data/)
+- [Professional Python Workflow Guide](https://denisecase.github.io/pro-analytics-02/)
+- [Citation](CITATION.cff)
+- [License](LICENSE)

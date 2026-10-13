@@ -1,6 +1,6 @@
-"""
-config_case.py
-(EDIT YOUR COPY OF THIS FILE)
+"""config.py.
+
+(EDIT YOUR VERSION OF THIS FILE)
 
 Purpose
 
@@ -12,12 +12,11 @@ Analytical Questions
 - What HTTP request headers are required?
 - Where should raw and processed data be stored?
 
-Notes
-
-Following our process, do NOT edit this _case file directly,
+Notes:
+Following our process, do NOT edit this  file directly,
 keep it as a working example.
 
-In your custom project,copy this _case.py file and
+In your custom project,copy this .py file and
 append with _yourname.py instead.
 
 Then edit your copied Python file to change:

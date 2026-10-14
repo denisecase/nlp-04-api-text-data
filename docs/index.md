@@ -89,7 +89,7 @@ test, and maintain.
 
 - [GitHub Repository](https://github.com/denisecase/nlp-04-api-text-data)
 - [Example Pipeline](https://github.com/denisecase/nlp-04-api-text-data/blob/main/src/nlp/pipeline_api_json.py)
-- [Example Configuration](https://github.com/denisecase/nlp-04-api-text-data/blob/main/src/nlp/config_case.py)
+- [Example Configuration](https://github.com/denisecase/nlp-04-api-text-data/blob/main/src/nlp/config.py)
 - [Pipeline Stages](https://github.com/denisecase/nlp-04-api-text-data/tree/main/src/nlp)
 
 ## Project Resources

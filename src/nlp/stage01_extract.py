@@ -1,6 +1,6 @@
 """stage01_extract.py - Stage 01: Extract.
 
-(NO EDITS REQUIRED IN THIS FILE)
+NO EDITS REQUIRED IN THIS FILE (if paths have not changed.)
 
 Source: API
 Sink: raw JSON object + raw JSON file

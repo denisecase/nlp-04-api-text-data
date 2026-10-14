@@ -15,14 +15,7 @@ Analytical Questions
 - How can records be normalized into tabular form?
 - What derived fields would support analysis?
 
-Notes:
-Following our process, do NOT edit this  file directly,
-keep it as a working example.
-
-In your custom project, copy this .py file and
-append with _yourname.py instead.
-
-Then edit your copied Python file to:
+Edit your Python file to:
 - extract the fields needed for your analysis,
 - normalize records into a consistent structure,
 - create any derived fields required.

@@ -1,6 +1,6 @@
 """stage04_load.py.
 
-(NO EDITS REQUIRED IN THIS FILE)
+NO EDITS REQUIRED IN THIS FILE (if paths have not changed.)
 
 Source: DataFrame
 Sink: CSV file

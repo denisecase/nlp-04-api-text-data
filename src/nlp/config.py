@@ -12,14 +12,7 @@ Analytical Questions
 - What HTTP request headers are required?
 - Where should raw and processed data be stored?
 
-Notes:
-Following our process, do NOT edit this  file directly,
-keep it as a working example.
-
-In your custom project,copy this .py file and
-append with _yourname.py instead.
-
-Then edit your copied Python file to change:
+Edit your Python file to change:
 - API URL (source of the JSON data),
 - the HTTP Request Headers (to show your app name in the user-agent header)
 - customize your output file name.

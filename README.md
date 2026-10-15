@@ -124,7 +124,7 @@ data acquisition, validation, transformation, and persistence.
 Run the automated tests:
 
 ```shell
-uv run pytest
+uv run python -m pytest
 ```
 
 ## Project Documentation
